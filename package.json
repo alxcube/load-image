@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "name": "@alxcube/load-image",
+  "version": "0.1.0",
+  "description": "Function for image preloading",
+  "main": "dist/load-image.min.js",
+  "types": "dist/load-image.d.ts",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --config=webpack.config.js --progress && cross-env NODE_ENV=development webpack --config=webpack.config.js --progress --env minify",
+    "postbuild": "cp src/loadImage.d.ts dist/load-image.d.ts",
+    "build": "npm run build:types && npm run build:js && npm run build:legacy-js",
+    "build:types": "npx tsc --emitDeclarationOnly --project tsconfig.build-types.json",
+    "build:js": "cross-env NODE_ENV=production BROWSERSLIST_ENV=modern webpack --config=webpack.config.js --progress && cross-env NODE_ENV=production BROWSERSLIST_ENV=modern webpack --config=webpack.config.js --progress --env minify",
+    "build:legacy-js": "cross-env NODE_ENV=production.old BROWSERSLIST_ENV=legacy webpack --config=webpack.config.js --progress && cross-env NODE_ENV=production.old BROWSERSLIST_ENV=legacy webpack --config=webpack.config.js --progress --env minify",
+    "watch": "cross-env NODE_ENV=development webpack --config=webpack.config.js --progress --watch",
+    "test": "karma start"
+  },
+  "keywords": [
+    "image preloading"
+  ],
+  "author": "Alexander Alexandrov <alxcube@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/jasmine": "^4.3.1",
+    "babel-loader": "^9.1.2",
+    "core-js": "^3.29.1",
+    "cross-env": "^7.0.3",
+    "jasmine-core": "^4.5.0",
+    "karma": "^6.4.1",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.0.0",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.4.0",
+    "karma-webpack": "^5.0.0",
+    "typedoc": "^0.23.26",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
