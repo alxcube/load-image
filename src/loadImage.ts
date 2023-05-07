@@ -2,6 +2,7 @@ export * from "./version";
 
 /**
  * loadImage() function options.
+ * @public
  */
 export interface LoadImageOptions {
   /**
@@ -23,8 +24,9 @@ export interface LoadImageOptions {
 /**
  * Returns promise resolving preloaded HTMLImageElement from src string.
  *
- * @param src
- * @param options
+ * @param src -
+ * @param options -
+ * @public
  */
 export function loadImage(
   src: string,
