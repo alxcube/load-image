@@ -37,7 +37,7 @@ export function loadImage(
   return new Promise((resolve, reject) => {
     const image = new Image();
 
-    let timer: number;
+    let timer: ReturnType<typeof setTimeout>;
 
     function cleanup() {
       if (timer) {
