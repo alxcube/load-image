@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "node -p \"'/**\\n * Library version\\n * @public\\n */\\nexport const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "build": "tsc && vite build",
-    "test": "karma start",
+    "test": "vitest",
     "lint": "eslint ./src --ext .ts",
     "prettier": "prettier --write \"src/**/*.ts\""
   },
@@ -18,35 +18,19 @@
   "author": "Alexander Alexandrov <alxcube@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.0",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-typescript": "^7.21.0",
-    "@microsoft/api-extractor": "^7.34.8",
-    "@types/jasmine": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
-    "babel-loader": "^9.1.2",
-    "core-js": "^3.29.1",
-    "cross-env": "^7.0.3",
+    "@vitest/browser": "^0.32.2",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
-    "jasmine-core": "^4.5.0",
-    "karma": "^6.4.1",
-    "karma-chrome-launcher": "^3.1.1",
-    "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.0.0",
-    "karma-opera-launcher": "^1.0.0",
-    "karma-sourcemap-loader": "^0.4.0",
-    "karma-webpack": "^5.0.0",
     "prettier": "^2.8.8",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
     "vite-plugin-banner": "^0.7.0",
     "vite-plugin-dts": "^3.0.0-beta.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "vitest": "^0.32.2",
+    "webdriverio": "^8.11.2"
   }
 }
