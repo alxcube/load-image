@@ -50,7 +50,12 @@ export function loadImage(
     if (timeout > 0) {
       timer = setTimeout(() => {
         cleanup();
-        reject(new Error(`Image ${src} timed out after ${timeout}ms.`));
+        reject(
+          new DOMException(
+            `Image "${src}" timed out after ${timeout}ms.`,
+            "TimeoutError"
+          )
+        );
       }, timeout);
     }
 

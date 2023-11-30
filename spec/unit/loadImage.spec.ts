@@ -16,16 +16,15 @@ describe("loadImage", () => {
   it("should reject with an error if the image cannot be loaded", async () => {
     try {
       await loadImage("https://example.com/nonexistent.jpg");
-      throw new Error("Expected loadImage to reject with an error.");
+      expect.fail("Expected loadImage to reject with an error.");
     } catch (error) {
       expect(error).toBeDefined();
-      expect(error instanceof Error).toBe(true);
-      expect(error.message).toContain("Couldn't load image");
+      expect(error).toBeInstanceOf(Error);
+      expect((error as Error).message).toContain("Couldn't load image");
     }
   });
 
   it.skip("should respect the timeout option", async () => {
-    // todo: check if timers faking is fixed
     vi.useFakeTimers();
     const slowImagePromise = loadImage("https://example.com/slow-image.jpg", {
       timeout: 100,
@@ -33,11 +32,11 @@ describe("loadImage", () => {
     vi.advanceTimersByTime(101);
     try {
       await slowImagePromise;
-      throw new Error("Expected loadImage to reject with a timeout error.");
+      expect.fail("Expected loadImage to reject with a timeout error.");
     } catch (error) {
       expect(error).toBeDefined();
-      expect(error instanceof Error).toBe(true);
-      expect(error.message).toContain("timed out");
+      expect(error).toBeInstanceOf(DOMException);
+      expect((error as DOMException).name).toBe("TimeoutError");
     }
     vi.useRealTimers();
   });
@@ -62,11 +61,11 @@ describe("loadImage", () => {
       await loadImage("https://example.com/slow-image.jpg", {
         signal: controller.signal,
       });
-      throw new Error("Expected loadImage to reject with an abort error.");
+      expect.fail("Expected loadImage to reject with an abort error.");
     } catch (error) {
       expect(error).toBeDefined();
-      expect(error instanceof DOMException).toBe(true);
-      expect(error.name).toBe("AbortError");
+      expect(error).toBeInstanceOf(DOMException);
+      expect((error as DOMException).name).toBe("AbortError");
     }
   });
 });
