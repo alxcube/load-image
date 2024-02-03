@@ -8,7 +8,9 @@ export default defineConfig({
   plugins: [
     dts({
       insertTypesEntry: true,
-      outputDir: "./dist/types",
+      outDir: "./dist/types",
+      strictOutput: false,
+      include: "./src",
     }),
     banner(
       `${packageInfo.name} ${packageInfo.version}\n© 2023 ${packageInfo.author}\nLicense: ${packageInfo.license}`

@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: "module",
   },
   plugins: ["import", "@typescript-eslint", "prettier"],
@@ -16,7 +16,7 @@ module.exports = {
   settings: {
     "import/resolver": {
       node: {
-        paths: ["./src"],
+        paths: ["./src", "./spec"],
         extensions: [".ts", ".d.ts"],
       },
     },

@@ -24,7 +24,7 @@ describe("loadImage", () => {
     }
   });
 
-  it.skip("should respect the timeout option", async () => {
+  it("should respect the timeout option", async () => {
     vi.useFakeTimers();
     const slowImagePromise = loadImage("https://example.com/slow-image.jpg", {
       timeout: 100,
@@ -39,18 +39,6 @@ describe("loadImage", () => {
       expect((error as DOMException).name).toBe("TimeoutError");
     }
     vi.useRealTimers();
-  });
-
-  it.skip("should respect the crossOrigin option", async () => {
-    const image = await loadImage(
-      "https://via.placeholder.com/150x150.png?text=Test+Image",
-      { crossOrigin: "anonymous" }
-    );
-    expect(image).toBeDefined();
-    expect(image instanceof HTMLImageElement).toBe(true);
-    expect(image.complete).toBe(true);
-    expect(image.naturalWidth).toBeGreaterThan(0);
-    expect(image.naturalHeight).toBeGreaterThan(0);
   });
 
   it("should abort the image loading if the signal is aborted", async () => {
