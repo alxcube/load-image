@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@alxcube/load-image",
   "version": "0.1.4",
   "type": "module",
@@ -40,5 +39,9 @@
     "vite-plugin-dts": "^3.7.2",
     "vitest": "^1.2.2",
     "webdriverio": "^8.29.7"
+  },
+  "files": ["dist"],
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
   }
 }
