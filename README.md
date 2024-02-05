@@ -7,6 +7,5 @@ Promise-based image preloading function.
 ```typescript
 import {loadImage} from "@alxcube/load-image";
 
-loadImage('image/url.png')
-    .then(img => document.body.appendChild(img));
+document.body.appendChild(await loadImage("image/url.png"));
 ```
